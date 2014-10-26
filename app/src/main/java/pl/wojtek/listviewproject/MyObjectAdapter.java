@@ -30,6 +30,7 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
 
         TextView textView=(TextView)view.findViewById(R.id.nameTextView);
         textView.setText(this.list.get(position).getName());
-        return super.getView(position, convertView, parent);
+
+        return view;
     }
 }

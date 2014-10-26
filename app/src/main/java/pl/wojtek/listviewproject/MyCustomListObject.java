@@ -12,6 +12,9 @@ public class MyCustomListObject {
 
     private String name;
 
+
+
+
     public MyCustomListObject(String name) {
         this.name = name;
     }
