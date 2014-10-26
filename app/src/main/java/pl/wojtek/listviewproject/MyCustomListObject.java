@@ -11,6 +11,15 @@ public class MyCustomListObject {
 
 
     private String name;
+    private boolean isChecked;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
 
 
