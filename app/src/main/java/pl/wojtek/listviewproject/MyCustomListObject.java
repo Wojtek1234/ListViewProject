@@ -1,5 +1,9 @@
 package pl.wojtek.listviewproject;
 
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,4 +46,6 @@ public class MyCustomListObject {
     public String getName() {
         return name;
     }
+
+
 }

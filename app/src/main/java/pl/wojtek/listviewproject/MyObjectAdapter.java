@@ -28,15 +28,30 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater layoutInflater=context.getLayoutInflater();
-        View view= layoutInflater.inflate(R.layout.item_row,null);
+
+
+        View view=convertView;
+        ViewHolder viewHolder;
+        if(convertView==null){
+            LayoutInflater layoutInflater=context.getLayoutInflater();
+            view= layoutInflater.inflate(R.layout.item_row,null);
+            viewHolder=new ViewHolder();
+            viewHolder.textView=(TextView)view.findViewById(R.id.nameTextView);
+            viewHolder.checkBox=(CheckBox)view.findViewById(R.id.selectCheckBox);
+            viewHolder.imageView=(ImageView)view.findViewById(R.id.imageView);
+            view.setTag(viewHolder);
+        }else{
+            viewHolder=(ViewHolder)convertView.getTag();
+        }
+
         final MyCustomListObject myCustomObject=this.list.get(position);
-        TextView textView=(TextView)view.findViewById(R.id.nameTextView);
+
+        TextView textView=viewHolder.textView;
         textView.setText(this.list.get(position).getName());
-        ImageView iv=(ImageView)view.findViewById(R.id.imageView);
+        ImageView iv= viewHolder.imageView;
         iv.setImageDrawable(context.getResources().getDrawable(R.drawable.mordka));
 
-        CheckBox checkBox=(CheckBox)view.findViewById(R.id.selectCheckBox);
+        CheckBox checkBox= viewHolder.checkBox;
        /* checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -52,5 +67,11 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
         });
         checkBox.setChecked(myCustomObject.isChecked());
         return view;
+    }
+
+    class ViewHolder{
+        TextView textView;
+        ImageView imageView;
+        CheckBox checkBox;
     }
 }
