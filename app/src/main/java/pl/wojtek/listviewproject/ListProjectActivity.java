@@ -8,9 +8,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class ListProjectActivity extends Activity {
     private ArrayAdapter<MyCustomListObject> adapter;
+    private ArrayList<MyCustomListObject> lista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +23,8 @@ public class ListProjectActivity extends Activity {
 
     private void initListView() {
         ListView listView=(ListView)findViewById(R.id.listView);
-        this.adapter=new MyObjectAdapter(this,R.layout.item_row, MyCustomListObject.generateList());
+        lista= (ArrayList<MyCustomListObject>) MyCustomListObject.generateList();
+        this.adapter=new MyObjectAdapter(this,R.layout.item_row,lista);
         listView.setAdapter( this.adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -33,4 +37,10 @@ public class ListProjectActivity extends Activity {
     }
 
 
+    public void deleteSelected(View view) {
+        for(MyCustomListObject customListObject:lista){
+            if(customListObject.isChecked())lista.remove(customListObject);
+        }
+
+    }
 }

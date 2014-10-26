@@ -16,7 +16,8 @@ import java.util.List;
  */
 public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
 
-    private final List<MyCustomListObject> list;
+
+    private  List<MyCustomListObject> list;
     private Activity context;
 
     public MyObjectAdapter(Activity context, int resource, List<MyCustomListObject> objects) {
@@ -25,6 +26,9 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
         this.list=objects;
     }
 
+    public  void setList(List<MyCustomListObject> list) {
+        this.list = list;
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
