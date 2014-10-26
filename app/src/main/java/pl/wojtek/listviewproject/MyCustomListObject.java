@@ -24,6 +24,7 @@ public class MyCustomListObject {
 
         for(int i=0;i<20;i++){
             MyCustomListObject myCustomListObject=new MyCustomListObject("Name" +i);
+
             result.add(myCustomListObject);
         }
         return result;

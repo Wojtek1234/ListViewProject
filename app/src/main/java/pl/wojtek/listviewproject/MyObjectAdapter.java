@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
         this.list=objects;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater layoutInflater=context.getLayoutInflater();
@@ -30,7 +32,8 @@ public class MyObjectAdapter extends ArrayAdapter<MyCustomListObject> {
 
         TextView textView=(TextView)view.findViewById(R.id.nameTextView);
         textView.setText(this.list.get(position).getName());
-
+        ImageView iv=(ImageView)view.findViewById(R.id.imageView);
+        iv.setImageDrawable(context.getResources().getDrawable(R.drawable.mordka));
         return view;
     }
 }
